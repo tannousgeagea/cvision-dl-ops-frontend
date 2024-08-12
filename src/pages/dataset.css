@@ -1,0 +1,18 @@
+
+.dataset-content-section {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.dataset-filter-section {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.image-preview-section {
+    border-radius: 6px;
+    margin-top: 20px;
+    
+  }

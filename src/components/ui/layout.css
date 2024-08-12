@@ -1,0 +1,16 @@
+/* src/components/Layout.css */
+.layout {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  width: 100%;
+  }
+  
+.layout-navbar {
+  display: flex;
+}
+
+.content {
+    padding: 20px;
+    box-sizing: border-box;
+}

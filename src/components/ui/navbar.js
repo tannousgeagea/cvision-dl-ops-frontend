@@ -4,7 +4,28 @@ import './navbar.css';
 
 const Navbar = () => {
 
-  const items = ['Projects', 'Dataset', 'Models', 'Deploy']
+  const items = [
+    {
+      "item": 'Projects',
+      "ref": "/",
+    },
+
+    {
+      "item": 'Datalake',
+      "ref": "/dataset",
+    },
+
+    {
+      "item": 'Models',
+      "ref": "/models",
+    },
+
+    {
+      "item": 'Deploy',
+      "ref": "/deploy",
+    },
+
+  ]
   return (
     <div className="navbar">
       <div className='navbar-header'>
@@ -13,8 +34,8 @@ const Navbar = () => {
       <div className='navbar-content'>
         {items.map((item, index) => (
           <div className='navbar-item'>
-            <a href=''>
-              <span>{item}</span>
+            <a href={item.ref}>
+              <span>{item.item}</span>
             </a>
           </div>
         ))}

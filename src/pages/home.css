@@ -33,20 +33,5 @@
 .content-section {
   display: flex;
   gap: 2rem;
-}
-
-.project-card {
-    min-width: 400px;
-    height: 100px;
-    padding: 20px;
-    background-color: #ecf0f1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-  }
-  
-.project-card:hover {
-  background-color: #eceef15b;
+  margin-bottom: 30px;
 }
