@@ -12,7 +12,7 @@ const ImagePreview = ( {images} ) => {
                         alt={`Uploaded ${image}`} 
                         className='thumbnail-preview'               
                     />
-                ))};
+                ))}
 
             </div>
         </div>

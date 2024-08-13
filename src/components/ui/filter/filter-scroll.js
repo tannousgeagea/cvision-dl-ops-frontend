@@ -1,44 +1,36 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import './filter.css';
-import DownArrow from '../../assets/icons/down-arrow.png';
+import DownArrow from '../../../assets/icons/down-arrow.png';
+import useToggle from '../../../hooks/use-toggle';
 
-const ScrollFilter = ({ name, data, filter_value, onFilterChange }) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const filterRef = useRef(null);
-
-    const handleToggle = () => {
-        setIsOpen(!isOpen);
-    };
-
+const ScrollFilter = ({ name, data, onFilterChange }) => {
+    const { isOpen, setIsOpen, filterRef, handleToggle } = useToggle()
+    const [count, setCount] = useState('')
     const handleOptionClick = (value) => {
         onFilterChange(value);
+        setCount(1)
         setIsOpen(false);
     };
 
-    const handleClickOutside = (event) => {
-        if (filterRef.current && !filterRef.current.contains(event.target)) {
-            setIsOpen(false);
-        }
-    };
-
-    useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []);
+    const handleClearClick = () => {
+        onFilterChange('')
+        setCount('')
+    }
 
     return (
         <div className="filter-container" ref={filterRef}>
-            <button className="filter-button" onClick={handleToggle}>
-                {name}
+            <button className="filter-content" onClick={handleToggle}>
+            <div className='filter-name'>
+                    {name}
+                    <span>{count}</span>
+                </div>
                 <img src={DownArrow} alt="Button icon" className="filter-icon" />
             </button>
             {isOpen && (
                 <div className="filter-dropdown">
-                    <div className='filter-clear'>
-                        Clear All
+                    <div className='filter-clear' onClick={handleClearClick}>
+                        <span>Clear All</span>
                     </div>
                     {data.map(item => (
                         <i
@@ -58,7 +50,6 @@ const ScrollFilter = ({ name, data, filter_value, onFilterChange }) => {
 ScrollFilter.propTypes = {
     name: PropTypes.string.isRequired,
     data: PropTypes.array.isRequired,
-    filter_value: PropTypes.string.isRequired,
     onFilterChange: PropTypes.func.isRequired,
 };
 

@@ -16,6 +16,11 @@ const Navbar = () => {
     },
 
     {
+      "item": "Upload",
+      "ref": "/upload",
+    },
+
+    {
       "item": 'Models',
       "ref": "/models",
     },

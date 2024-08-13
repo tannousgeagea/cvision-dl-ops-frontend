@@ -10,7 +10,6 @@ const useFetchData = (url_path) => {
         setLoading(true);
         try {
             const fetchedData = await fetchData(path);
-            console.log(fetchedData)
             setData(fetchedData);
             setError(null);
         } catch (error) {

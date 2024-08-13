@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
       <div className='layout-navbar'>
         <Navbar />
       </div>
-      <div className="content">
+      <div className="layout-content">
         {children}
       </div>
     </div>

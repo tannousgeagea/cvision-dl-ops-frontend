@@ -2,17 +2,35 @@
 .dataset-content-section {
     display: flex;
     flex-direction: column;
+    overflow: scroll;
+    height: 100%;
 }
-
 
 .dataset-filter-section {
     display: flex;
     flex-direction: row;
     gap: 1rem;
+    flex-wrap: wrap;
+    margin: 0px 30px;
+    align-items: center;
+}
+
+.image-filter-clear {
+    display: flex;
+    cursor: pointer;
+}
+
+.image-filter-clear span {
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+    font-style: italic;
 }
 
 .image-preview-section {
     border-radius: 6px;
     margin-top: 20px;
+    overflow: scroll;
     
   }
+
