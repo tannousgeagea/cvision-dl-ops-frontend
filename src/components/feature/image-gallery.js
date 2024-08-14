@@ -1,14 +1,14 @@
 import React from "react";
 import './image-gallery.css'
 
-const ImagePreview = ( {images} ) => {
+const ImageGallery = ( {images} ) => {
     return (
         <div className="image-preview-container">
             <div className="image-preview">
                 {images.map((image, index) => (
                     <img 
                         key={index}
-                        src={image}
+                        src={image.image_url}
                         alt={`Uploaded ${image}`} 
                         className='thumbnail-preview'               
                     />
@@ -19,4 +19,4 @@ const ImagePreview = ( {images} ) => {
     )
 };
 
-export default ImagePreview
+export default ImageGallery

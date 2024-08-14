@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from '../components/ui/navbar';
 import ProjectCard from '../components/feature/project-card';
 import './home.css';
 

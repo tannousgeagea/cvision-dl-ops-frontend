@@ -4,7 +4,7 @@ import SortFilter from "../components/ui/filter/filter-sort";
 import SearchFilter from "../components/ui/filter/filter-search";
 import ScrollFilter from "../components/ui/filter/filter-scroll";
 import useFetchData from '../hooks/use-fetch-data';
-import ImagePreview from "../components/feature/image-preview";
+import ImageGallery from "../components/feature/image-gallery";
 import DatasetIcon from '../assets/icons/dataset.png'
 import './dataset.css'
 
@@ -14,7 +14,7 @@ const Dataset = () => {
     const order = ['Newest', 'Oldest']
     const [filteredImages, setFilteredImages] = useState([]);
     const plantValues = Array.from(new Set(images.map(image => image.plant)));
-    const edgeBoxValues = Array.from(new Set(filteredImages.map(image => image.edge_box)));
+    const edgeBoxValues = Array.from(new Set(images.map(image => image.edge_box)));
 
     useEffect(() => {
         setFilteredImages(images);
@@ -35,7 +35,7 @@ const Dataset = () => {
     };
 
     const handleEdgeBoxtChange = (searchTerm) => {
-      const filtered = filteredImages.filter(image =>
+      const filtered = images.filter(image =>
           image.edge_box.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setFilteredImages(filtered);
@@ -89,7 +89,7 @@ const Dataset = () => {
                 />
               </div>
               <div className='image-preview-section'>
-              <ImagePreview 
+              <ImageGallery 
                   images={filteredImages}
               />
               </div>

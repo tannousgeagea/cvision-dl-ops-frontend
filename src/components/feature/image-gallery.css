@@ -15,18 +15,6 @@
   text-align: center;
 }
 
-.section-header {
-  display: flex;
-  margin-bottom: 30px;
-  padding: 40px;
-  flex-direction: row;
-  gap: 1rem;
-  align-items: center;
-}
-
-.section-header span {
-  font-size: 36px;
-}
 .header-icon {
   width: 42px;
   height: auto;
