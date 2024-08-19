@@ -57,8 +57,10 @@ const Dataset = () => {
       <div className="home-container">
         <div className="home-content">
           <div className='section-header'>
+            <div className="section-title">
             <img src={DatasetIcon} className="header-icon"></img>
             <span>Dataset</span>
+            </div>
           </div>
   
           <div className='dataset-content-section'>
