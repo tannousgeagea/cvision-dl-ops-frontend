@@ -6,7 +6,7 @@ const SubmitButton = ({ onSubmit }) => {
 
     return (
 
-        <div className='submit-button'>
+        <div className='submit-button' onClick={onSubmit}>
             <div className='submit-button-content'>
                 <img src={fileUpload} alt="Button icon" className="button-icon"/>
                 <span>Save and Submit</span>

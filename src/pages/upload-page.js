@@ -7,10 +7,16 @@ import FileSelectButton from "../components/ui/button/file-select-button";
 import FolderSelectButton from "../components/ui/button/folder-select-button";
 import ImagePreview from "../components/feature/image-preview";
 import uploadIcon from "../assets/icons/upload-center.png"
+import handleUpload from "../components/api/upload";
 import "./upload-page.css"
 
 const UploadPage = () => {
     const { files, images, handleFileSelect } = useSelectFile();
+    const [uploadPercentage, setUploadPercentage] = useState(0);
+    const [uploading, setUploading] = useState(false);
+    const [overlayVisible, setOverlayVisible] = useState(false);
+    const [uploadComplete, setUploadComplete] = useState(false);
+
     const meta_info = {
         "plant": "",
         "edge_box": "",
@@ -26,6 +32,16 @@ const UploadPage = () => {
         }));
     };
 
+    const handleUploadClick = () => {
+        setOverlayVisible(true);
+        handleUpload({
+          files: files,
+          setUploading,
+          setUploadPercentage,
+          setUploadComplete
+        });
+      };
+
     return (
         <div className="upload-container">
             <div className="upload-content">
@@ -36,7 +52,7 @@ const UploadPage = () => {
                     </div>
                     {files.length > 0 && 
                         <div className="sbumit-upload">
-                            <SubmitButton onChange={handleFileSelect} />
+                            <SubmitButton onSubmit={handleUploadClick} />
                         </div>
                     }
 
@@ -88,6 +104,21 @@ const UploadPage = () => {
                                 </div>
                             </div>
                             <ImagePreview images={images}/>
+                            {overlayVisible && (
+                                <div className={`progress-overlay ${uploadComplete ? 'checkmark-overlay' : ''}`}>
+                                    {uploadComplete ? (
+                                        <div className="checkmark">
+                                            <img src={uploadIcon} className="header-icon"></img>
+                                        </div>
+                                    ) : (
+                                        <div className="progress-bar">
+                                            <progress value={uploadPercentage} max="100">{uploadPercentage}%</progress>
+                                            <span>{uploadPercentage}%</span>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+
                         </div>
                     )}
 
