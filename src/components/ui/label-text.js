@@ -5,7 +5,15 @@ const TextLabel = (props) => {
     return (
         <div className="text-label">
             <label for='label'>{props.label}</label>
-            <input type="text" id='label' placeholder={props.placeholder}/>
+            <input 
+                type="text" 
+                id='label'
+                name={props.name}
+                value={props.value} 
+                onChange={(e) => props.onChange(e.target.name, e.target.value)}
+                placeholder={props.placeholder}
+                required
+            />
         </div>
     )
 }
