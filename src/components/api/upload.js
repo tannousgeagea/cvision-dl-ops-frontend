@@ -13,7 +13,7 @@ const handleUpload = async ({ files, setUploading, setUploadPercentage, setUploa
     setUploadPercentage(0);
 
     try {
-      const response = await axios.post(`${baseURL}/api/v1/images?edge_box=wae-ae1-00002&location=Ludwigshafen&plant=GML`, formData, {
+      const response = await axios.post(`${baseURL}/api/v1/images`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

@@ -12,7 +12,7 @@ const Navbar = () => {
 
     {
       "item": 'Datalake',
-      "ref": "/dataset",
+      "ref": "/datalake",
     },
 
     {

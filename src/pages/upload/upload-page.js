@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import TextLabel from "../components/ui/label-text";
-import uploadHeader from '../assets/icons/upload.png'
-import useSelectFile from "../hooks/use-select-file";
-import SubmitButton from "../components/ui/button/submit-button";
-import FileSelectButton from "../components/ui/button/file-select-button";
-import FolderSelectButton from "../components/ui/button/folder-select-button";
-import ImagePreview from "../components/feature/image-preview";
-import uploadIcon from "../assets/icons/upload-center.png"
-import handleUpload from "../components/api/upload";
+import TextLabel from "../../components/ui/input/label-text";
+import useSelectFile from "../../hooks/use-select-file";
+import SubmitButton from "../../components/ui/button/submit-button";
+import FileSelectButton from "../../components/ui/button/file-select-button";
+import FolderSelectButton from "../../components/ui/button/folder-select-button";
+import ImagePreview from "../../components/feature/image-preview";
+import handleUpload from "../../components/api/upload";
 import "./upload-page.css"
+
+import uploadHeader from '../../assets/icons/upload.png'
+import uploadIcon from "../../assets/icons/upload-center.png";
+import checkIcon from '../../assets/icons/check.png';
 
 const UploadPage = () => {
     const { files, images, handleFileSelect } = useSelectFile();
@@ -18,9 +20,7 @@ const UploadPage = () => {
     const [uploadComplete, setUploadComplete] = useState(false);
 
     const meta_info = {
-        "plant": "",
-        "edge_box": "",
-        "plant_location": "",
+        "source": "",
     }
 
     const [metaInfo, setMetaInfo] = useState(meta_info)
@@ -51,7 +51,7 @@ const UploadPage = () => {
                         <span>Upload</span>
                     </div>
                     {files.length > 0 && 
-                        <div className="sbumit-upload">
+                        <div className="subumit-upload">
                             <SubmitButton onSubmit={handleUploadClick} />
                         </div>
                     }
@@ -61,24 +61,10 @@ const UploadPage = () => {
                 <div className='upload-page-section'>
                     <div className="upload-page-input">
                         <TextLabel 
-                            label='Plant'
-                            placeholder='Enter Plant ...'
-                            name='plant'
-                            value={metaInfo['plant']}
-                            onChange={handleChange}
-                        />
-                        <TextLabel 
-                            label='Edge Box'
-                            placeholder='Enter Edge Box ...'
-                            name='edge_box'
-                            value={metaInfo['edge_box']}
-                            onChange={handleChange}
-                        />
-                        <TextLabel 
-                            label='Plant Location'
-                            placeholder='Enter Plant Location ...'
-                            name='plant_location'
-                            value={metaInfo['plant_location']}
+                            label='Source'
+                            placeholder='Enter Source ...'
+                            name='source'
+                            value={metaInfo['source']}
                             onChange={handleChange}
                         />
                     </div>
@@ -108,7 +94,7 @@ const UploadPage = () => {
                                 <div className={`progress-overlay ${uploadComplete ? 'checkmark-overlay' : ''}`}>
                                     {uploadComplete ? (
                                         <div className="checkmark">
-                                            <img src={uploadIcon} className="header-icon"></img>
+                                            <img src={checkIcon} className="header-icon"></img>
                                         </div>
                                     ) : (
                                         <div className="progress-bar">

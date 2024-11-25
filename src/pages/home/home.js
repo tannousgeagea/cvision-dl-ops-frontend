@@ -1,5 +1,5 @@
 import React from 'react';
-import ProjectCard from '../components/feature/project-card';
+import ProjectCard from '../../components/feature/project-card';
 import './home.css';
 
 const Home = () => {

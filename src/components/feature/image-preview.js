@@ -6,7 +6,7 @@ const ImagePreview = ( {images} ) => {
         <div className="image-preview-container">
             <div className="image-preview">
                 {images.map((image, index) => (
-                    <img 
+                    <img
                         key={index}
                         src={image}
                         alt={`Uploaded ${image}`} 

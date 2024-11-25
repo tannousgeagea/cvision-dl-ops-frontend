@@ -13,27 +13,26 @@
 .home-content {
     display: flex;
     flex-direction: column;
-    /* padding: 40px; */
     box-sizing: border-box;
-    gap: 20px;
-    min-height: 100%;
+    gap: 1.5rem;
+    width: 100%;
   }
 
 .content-header {
   display: flex;
-  margin-bottom: 30px;
-  padding: 20px;
+  margin-bottom: 2rem;
+  padding: 1rem;
   flex-direction: row;
   justify-content: space-between;
 }
   
 .content-header span {
-  font-size: 32px;
+  font-size: 1.5rem;
   font-style: normal;
 }
 
 .content-section {
   display: flex;
   gap: 2rem;
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
 }
