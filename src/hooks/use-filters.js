@@ -7,7 +7,7 @@ const useFilters = () => {
 
     const fetchMetadata = async () => {
         try {
-            const response = await fetch("http://localhost:18085/api/v1/images/metadata");
+            const response = await fetch("http://localhost:29085/api/v1/images/metadata");
             const data = await response.json();
 
             if (data && data.data) {

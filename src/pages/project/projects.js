@@ -2,30 +2,20 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ProjectCard from "../../components/ui/card/project-card";
 import NewProjectButton from "../../components/ui/button/create-project-button";
+import useFetchData from "../../hooks/use-fetch-data";
 import "./projects.css";
 
 const Projects = () => {
-    const [projects, setProjects] = useState([
-        {
-            id: 1,
-            name: "amk_front_impurity",
-            lastEdited: "10 hours",
-            images: Array(520).fill(null),
-            thumbnail: "https://via.placeholder.com/150",
-        },
-        {
-            id: 2,
-            name: "tirme_impurity",
-            lastEdited: "10 hours",
-            images: Array(520).fill(null),
-            thumbnail: "https://via.placeholder.com/150",
-        },
-    ]);
+
+    const {data: projects, loading: loadingProjects, error: errorProjects} = useFetchData('/api/v1/projects')
 
     const navigate = useNavigate();
     const handleViewProject = (projectId) => {
         navigate(`/projects/${projectId}`, { state: { projects } });
     };
+
+    if (loadingProjects) return <p>Loading metadata...</p>;
+    if (errorProjects) return <p>Error loading data: {errorProjects.message}</p>;
 
     return (
         <div className="projects-container">

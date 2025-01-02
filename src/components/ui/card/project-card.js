@@ -1,5 +1,11 @@
 import React from "react";
+import { formatDistanceToNow, parseISO } from "date-fns";
 import "./project-card.css";
+
+const formatEditedTime = (isoDateString) => {
+    const date = parseISO(isoDateString);
+    return `Edited ${formatDistanceToNow(date, { addSuffix: true })}`;
+};
 
 const ProjectCard = ({ project, onView }) => {
     return (
@@ -19,13 +25,13 @@ const ProjectCard = ({ project, onView }) => {
                     </div>
 
                 </div>
-                <div className="card-meta">Edited {project.lastEdited} ago</div>
+                <div className="card-meta">{formatEditedTime(project.lastEdited)}</div>
                 <div className="card-details">
-                    Private • {project.images.length} Images • 0 Models
+                    Private • {project.images} Images • 0 Models
                 </div>
             </div>
             <div className="card-actions">
-                <button onClick={() => onView(project.id)}>•••</button>
+                <button onClick={() => onView(project.name)}>•••</button>
             </div>
         </div>
     );

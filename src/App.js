@@ -11,16 +11,15 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 function App() {
   return (
     <Router>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
+      <Routes>
+        <Route path="/" element={<Layout />}>
           <Route path='/datalake' element={<Datalake />} />
           <Route path='/projects' element={<Projects />} />
           <Route path='/upload' element={<UploadPage />} />
           <Route path='/annotate/:imageId' element={<ImageAnnotation />} />
-          {/* Add more routes as needed */}
-        </Routes>
-      </Layout>
+        {/* Add more routes as needed */}
+        </Route>
+      </Routes>
     </Router>
   );
 }
