@@ -27,7 +27,7 @@ const Projects = () => {
             </div>
             <div className="project-list">
                 {projects.map((project) => (
-                    <ProjectCard key={project.id} project={project} onView={handleViewProject} />
+                    <ProjectCard key={project.name} project={project} onView={handleViewProject} />
                 ))}
             </div>
         </div>

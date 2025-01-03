@@ -6,8 +6,9 @@ import SearchFilter from "../../components/ui/filter/filter-search";
 import ScrollFilter from "../../components/ui/filter/filter-scroll";
 import SortFilter from "../../components/ui/filter/filter-sort";
 import ImageGallery from "../../components/feature/image-gallery";
-import DatasetIcon from "../../assets/icons/database-solid.svg";
+import DatalakeIcon from "../../assets/icons/nav/datalake.png";
 import Spinner from "../../components/ui/animation/spinner";
+
 import "./datalake.css";
 
 const Datalake = () => {
@@ -23,12 +24,12 @@ const Datalake = () => {
     };
 
     return (
-        <div className="home-container">
-            <div className="home-content">
+        <div className="section-container">
+            <div className="section-content">
                 <div className="section-header">
                     <div className="section-title">
-                        <img src={DatasetIcon} className="header-icon" alt="Dataset Icon" />
-                        <span>DataLake</span>
+                        <img src={DatalakeIcon} className="header-icon" alt="Dataset Icon" />
+                        <span>Datalake</span>
                     </div>
                 </div>
 
