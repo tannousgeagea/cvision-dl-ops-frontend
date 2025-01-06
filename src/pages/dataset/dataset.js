@@ -17,11 +17,12 @@ const Dataset = () => {
         <h1>Dataset</h1>
         <div className="image-grid">
             {data.map((image) => (
-                <div key={image.image_id} className="image-card">
-                    {/* <img src={image.image_url} alt={image.image_name} />
-                    <p>{image.image_name}</p> */}
-                    <ImageCard key={image.image_id} image={image} />
-                </div>
+                // <div key={image.image_id} className="image-card">
+                //     {/* <img src={image.image_url} alt={image.image_name} />
+                //     <p>{image.image_name}</p> */}
+                //     <ImageCard key={image.image_id} image={image} />
+                // </div>
+                <ImageCard key={image.image_id} image={image} />
             ))}
         </div>
     </div>

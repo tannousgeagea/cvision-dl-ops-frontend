@@ -1,5 +1,6 @@
 // components/ui/card/ImageCard.js
 import React, { useRef, useEffect } from "react";
+import './image-card.css'
 
 const ImageCard = ({ image }) => {
   const canvasRef = useRef(null);
@@ -23,17 +24,12 @@ const ImageCard = ({ image }) => {
             index % 2 === 0 ? coord * canvas.width : coord * canvas.height
           );
 
+
           // Draw the bounding box
-          ctx.strokeStyle = "red";
-          ctx.lineWidth = 2;
+          ctx.strokeStyle = "yellow";
+          ctx.lineWidth = 15;
           ctx.strokeRect(xMin, yMin, xMax - xMin, yMax - yMin);
 
-          // Draw class label
-          ctx.fillStyle = "rgba(255, 0, 0, 0.7)";
-          ctx.fillRect(xMin, yMin - 20, 80, 20);
-          ctx.fillStyle = "#fff";
-          ctx.font = "12px Arial";
-          ctx.fillText(annotation.class_name, xMin + 5, yMin - 5);
         });
       }
     };
