@@ -12,14 +12,41 @@
     margin-bottom: 0.25rem;
     margin-top: 0.25rem;
 }
-  
+ 
+.filter-tabs {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 10px 20px;
+  /* border: 1px solid #ccc; */
+  /* border-radius: 20px; */
+  /* background-color: #f9f9f9; */
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 14px;
+}
+
+.tab.active {
+  background-color: #6a0dad; /* Purple for active tab */
+  color: white;
+}
+
+.tab:hover {
+  background-color: #e0e0e0;
+}
+
 .image-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1 rem;
     overflow: scroll;
-    padding: 1rem;
+    padding: 2rem 1rem;
     width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 1rem;
   }
   
 .image-card {

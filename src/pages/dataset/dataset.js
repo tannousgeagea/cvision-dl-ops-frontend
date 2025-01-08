@@ -6,7 +6,8 @@ import { useParams } from "react-router-dom";
 import "./dataset.css";
 
 const Dataset = () => {
-    const { projectId } = useParams()
+  const { projectId } = useParams()
+  const [selectedFilter, setSelectedFilter] = useState("unannotated");
   const { data, loading, error } = useFetchData(`/api/v1/projects/${projectId}/images`);
   
   if (loading) return <p>Loading images...</p>;
@@ -15,6 +16,14 @@ const Dataset = () => {
   return (
     <div className="dataset">
         <h1>Dataset</h1>
+        <div className="filter-tabs">
+          <div className={`tab ${selectedFilter === "unannotated" ? "active" : ""}`}>
+            <span>Unannotated</span>
+          </div>
+          <div className={`tab ${selectedFilter === "annotated" ? "active" : ""}`}>
+            <span>Unannotated</span>
+          </div>
+        </div>
         <div className="image-grid">
             {data.map((image) => (
                 // <div key={image.image_id} className="image-card">
