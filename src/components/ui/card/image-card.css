@@ -28,7 +28,7 @@
   }
 
 .image-card:hover {
-    background-color: rgba(128, 0, 255, 0.1);
+    background-color: rgba(128, 0, 255, 0.3);
 }
   
 .image-card img {

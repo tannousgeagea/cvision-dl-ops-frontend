@@ -11,8 +11,8 @@ const Layout = () => {
         <Navbar />
       </div>
       <div className="layout-main">
-          <div className='layout-header'>
-          </div>
+          {/* <div className='layout-header'>
+          </div> */}
           
           <div className='layout-content'>
             <Outlet />

@@ -1,13 +1,12 @@
 import React from 'react';
-import { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom'; // Import Link from react-router-dom
 import Logo from '../../../assets/icons/nav/vision.png'
 import HamburgerIcon from '../../../assets/icons/nav/menu.png'; // Hamburger menu icon
 import CloseIcon from '../../../assets/icons//nav/close.png';
 import ProjectIcon from '../../../assets/icons//nav/projects.png'
 import DatalakeIcon from '../../../assets/icons//nav/datalake.png'
-import UploadIcon from '../../../assets/icons//nav/projects.png'
-import LiveStreamIcon from '../../../assets/icons/nav/live-stream.png'
+import UploadIcon from '../../../assets/icons//nav/upload.png'
 import ModelsIcon from '../../../assets/icons/nav/ai-model.png'
 import DeployIcon from '../../../assets/icons/nav/shuttle.png'
 
@@ -17,6 +16,7 @@ import './navbar.css';
 
 const Navbar = () => {
   const [isExpanded, setIsExpanded] = useState(true);
+  const location = useLocation();
 
   const items = [
     { item: 'Projects', ref: '/projects', 'icon':  ProjectIcon},
@@ -29,6 +29,12 @@ const Navbar = () => {
   const toggleNavbar = () => {
     setIsExpanded(!isExpanded); // Toggle the navbar state
   };
+
+  useEffect(() => {
+    if (location.pathname.includes('/projects/')) {
+      setIsExpanded(false); // Collapse the navbar
+    }
+  }, [location.pathname]);
 
   return (
     <div className={`navbar ${isExpanded ? 'expand' : 'collapsed'}`}>

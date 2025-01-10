@@ -45,7 +45,7 @@ const UploadPage = () => {
     return (
         <div className="upload-container">
             <div className="upload-content">
-                <div className='section-header'>
+                {/* <div className='section-header'>
                     <div className="section-title">
                         <img src={uploadHeader} alt="upload-icon" className="header-icon"></img>
                         <span>Upload</span>
@@ -56,7 +56,7 @@ const UploadPage = () => {
                         </div>
                     }
 
-                </div>
+                </div> */}
 
                 <div className='upload-page-section'>
                     <div className="upload-page-input">

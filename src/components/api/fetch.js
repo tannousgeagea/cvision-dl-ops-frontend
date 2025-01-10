@@ -11,7 +11,7 @@ async function fetchData(url_path) { // url_path is a string, not an object
         }
 
         const data = await response.json();
-        return data['data'];
+        return data;
     } catch (error) {
         console.error('Error fetching data:', error);
         return [];

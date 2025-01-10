@@ -13,7 +13,6 @@
 
 .layout-main {
   width: 100%;
-  background-color: #e5e9eb9a;
   }
 
 .layout-header {
@@ -22,7 +21,6 @@
   background: rgba(128, 0, 255, 0.7);
   justify-content: space-between;
   padding: 2rem;
-  margin-bottom: 0.75rem;
   box-sizing: border-box;
   box-shadow: 0 2px 0px rgba(0, 0, 0, 0.1);
   }
@@ -30,12 +28,9 @@
 .layout-content {
   display: flex;
   justify-content: flex-start;
-  padding: 0.5rem 0.75rem;
   box-sizing: border-box; 
-  margin-left: 0.75rem;
   margin-right: 3rem;
-  margin-top: 0.5rem;
   margin-bottom: .5rem;
-  max-height: 87%;
+  max-height: 95%;
     
 }
