@@ -1,30 +1,32 @@
+
 import { useState, useEffect } from "react";
-import fetchData from "../components/api/fetch";
+import axios from "axios";
+import { baseURL } from "../components/api/base";
 
-const useFetchData = (url_path) => {
-    const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+const useFetchData = (url) => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    const getData = async (path) => {
-        setLoading(true);
-        try {
-            const fetchedData = await fetchData(path);
-            setData(fetchedData);
-            setError(null);
-        } catch (error) {
-            setError(error.message);
-            setData([]);
-        } finally {
-            setLoading(false);
-        }
-    };
+  const fetchData = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await axios.get(`${baseURL}${url}`);
+      setData(response.data);
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    useEffect(() => {
-        getData(url_path);
-    }, [url_path]);
+  useEffect(() => {
+    fetchData();
+  }, [url]);
 
-    return { data, loading, error };
+  // Return data, loading, error, and the refetch function
+  return { data, loading, error, refetch: fetchData };
 };
 
 export default useFetchData;

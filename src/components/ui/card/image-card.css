@@ -31,7 +31,7 @@
     background-color: rgba(128, 0, 255, 0.3);
 }
   
-.image-card img {
+.image-card canvas {
     width: 100%;
     border-radius: 0.25rem;
     object-fit: cover;

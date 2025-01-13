@@ -1,16 +1,20 @@
 // pages/Dataset.js
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import useFetchData from "../../hooks/use-fetch-data";
 import ImageCard from "../../components/ui/card/image-card";
 import { useParams } from "react-router-dom";
-import "./dataset.css";
-import feedbackIcon from '../../assets/icons/feedback.png'
 import FilterTabs from "../../components/ui/filter/filter-tabs";
 import Spinner from '../../components/ui/animation/spinner'
+import PaginationControls from "../../components/ui/actions/pagination-control";
+import DatasetActions from "../../components/ui/actions/dataset-actions";
+
+import "./dataset.css";
 
 const Dataset = () => {
   const { projectId } = useParams()
   const [selectedFilter, setSelectedFilter] = useState("unannotated");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 30;
 
   const getFilterParams = () => {
     switch (selectedFilter) {
@@ -23,24 +27,19 @@ const Dataset = () => {
     }
   };
 
-  const filters = [
-    { key: "unannotated", label: "Unannotated", count: 0 },
-    { key: "annotated", label: "Annotated", count: 0 },
-    { key: "reviewed", label: "Reviewed", count: 0 },
-  ];
-
   const filterParams = getFilterParams();
-  const { data, loading, error } = useFetchData(
-    `/api/v1/projects/${projectId}/images?annotated=${filterParams.annotated}&reviewed=${filterParams.reviewed}`
+  const { data, loading, error, refetch } = useFetchData(
+    `/api/v1/projects/${projectId}/images?annotated=${filterParams.annotated}&reviewed=${filterParams.reviewed}&items_per_page=${itemsPerPage}&page=${currentPage}`
   );
+
+  const filters = [
+    { key: "unannotated", label: "Unannotated", count: data?.unannotated || 0  },
+    { key: "annotated", label: "Annotated", count: data?.annotated || 0  },
+    { key: "reviewed", label: "Reviewed", count: data?.reviewed || 0  },
+  ];
 
   const totalRecord = data?.total_record || 0;
   const imageData = data?.data || []
-  const dynamicFilters = filters.map((filter) => ({
-    ...filter,
-    count: data?.[filter.key] || 0,
-  }));
-
   if (error) return <p>Error loading images: {error.message}</p>;
 
   return (
@@ -48,14 +47,20 @@ const Dataset = () => {
         <h1>Dataset</h1>
         <div className="tabs">
           <FilterTabs 
-            filters={dynamicFilters}
+            filters={filters}
             selectedFilter={selectedFilter}
-            onSelectFilter={setSelectedFilter}
+            onSelectFilter={(filter) => {
+              setSelectedFilter(filter);
+              setCurrentPage(1);
+            }}
           />
-          <div className="request-feedback">
-            <img src={feedbackIcon} alt="feedback-icon"/>
-            <span>Request Feedback</span>
-          </div>
+
+          <DatasetActions
+            projectId={projectId}
+            refetch={refetch}
+            onFeedbackSuccess={() => setCurrentPage(1)}
+          />
+
         </div>
 
         {loading ? (
@@ -70,15 +75,22 @@ const Dataset = () => {
         ) : (
           <div className="image-grid">
             {imageData.map((image) => (
-                // <div key={image.image_id} className="image-card">
-                //     {/* <img src={image.image_url} alt={image.image_name} />
-                //     <p>{image.image_name}</p> */}
-                //     <ImageCard key={image.image_id} image={image} />
-                // </div>
                 <ImageCard key={image.image_id} image={image} />
             ))}
           </div>
+
         )}
+
+      {totalRecord > 0 && (
+        <PaginationControls
+          currentPage={currentPage}
+          totalPages={data.pages}
+          onNext={() => setCurrentPage((prev) => prev + 1)}
+          onPrevious={() => setCurrentPage((prev) => prev - 1)}
+        />
+      )}
+
+
     </div>
   );
 };
