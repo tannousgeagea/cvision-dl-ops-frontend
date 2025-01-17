@@ -14,7 +14,7 @@ const Dataset = () => {
   const { projectId } = useParams()
   const [selectedFilter, setSelectedFilter] = useState("unannotated");
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 30;
+  const itemsPerPage = 50;
 
   const getFilterParams = () => {
     switch (selectedFilter) {

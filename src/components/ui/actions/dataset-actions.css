@@ -16,6 +16,7 @@
     display: flex;
     align-items: center;
     gap: 0.25rem;
+    transition: background-color 0.3s ease;
   }
   
 .download-btn img {
@@ -57,3 +58,6 @@
     text-overflow: ellipsis;
   }
   
+.split-btn {
+  display: flex;
+}

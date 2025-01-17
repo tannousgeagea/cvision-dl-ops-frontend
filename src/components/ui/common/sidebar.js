@@ -15,7 +15,7 @@ const SideBar = () => {
     { item: "Upload Data", ref: `/projects/${projectId}/upload`, icon: uploadIcon },
     { item: "Annotate", ref: `/projects/${projectId}/annotate`, icon: annotateIcon },
     { item: "Dataset", ref: `/projects/${projectId}/dataset`, icon: datasetIcon },
-    { item: "Version", ref: `/projects/${projectId}/version`, icon: versionIcon },
+    { item: "Version", ref: `/projects/${projectId}/versions`, icon: versionIcon },
     { item: "Analytics", ref: `/projects/${projectId}/analytics`, icon: analyticsIcon },
   ];
 
@@ -35,7 +35,7 @@ const SideBar = () => {
         {items.map((item, index) => (
           <div
             className={`sidebar-item ${
-              location.pathname === item.ref ? "active" : ""
+              location.pathname.includes(item.ref) ? "active" : ""
             }`}
             key={index}
           >

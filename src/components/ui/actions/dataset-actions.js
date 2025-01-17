@@ -3,6 +3,8 @@ import { handleDownloadReviewedImages } from "../../../utils/downloadHelpers";
 import { useRequestFeedback } from "../../../hooks/use-request-feedback";
 import feedbackIcon from "../../../assets/icons/feedback.png";
 import generateIcon from "../../../assets/icons/actions/plus.png";
+import SplitDatasetButton from "../button/actions/split-dataset-btn";
+import GenerateDatasetVersion from "../button/actions/generate-version-btn";
 import LoadingPopup from "../popup/loading-popup";
 import SuccessPopup from "../popup/success-popup";
 import ErrorPopup from "../popup/error-popup";
@@ -28,10 +30,15 @@ const DatasetActions = ({ projectId, refetch, onFeedbackSuccess }) => {
   return (
     <>
       <div className="actions">
-        <button className="download-btn" onClick={() => handleDownloadReviewedImages(projectId)}>
-          <img src={generateIcon} alt="generate-icon" />
-          Generate Version
-        </button>
+        <GenerateDatasetVersion 
+          projectId={projectId}
+        />
+
+        <div className="split-btn">
+          <SplitDatasetButton 
+            projectId={projectId}
+          />
+        </div>
 
         <div className="request-feedback" onClick={handleRequestFeedback}>
           <img src={feedbackIcon} alt="feedback-icon" />
